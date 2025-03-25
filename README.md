@@ -4,14 +4,14 @@ Godot project with simple voxel engine.
 
 
 FEATURES:
-Blocks placement
-Ability to place diferent textures
-Random Generation
-Chanks
-A*like pathfinding
+Blocks placement,
+Ability to place diferent textures,
+Random Generation,
+Chunks,
+A*like pathfinding.
 
 
 HOW TO TRY:
-Open project in godot.
-Run World.scn in editor.
+1. Open project in godot.
+2. Run World.scn in editor.
 
