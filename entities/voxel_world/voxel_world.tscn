@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gswkt76cal4"]
+
+[ext_resource type="Script" uid="uid://bcaa5gbfjpfhm" path="res://entities/voxel_world/VoxelWorld.gd" id="1_45swj"]
+[ext_resource type="Script" uid="uid://ce6gj4hmmiddb" path="res://entities/voxel_world/Chunk.gd" id="3_a0bsy"]
+
+[node name="VoxelWorld" type="Node3D"]
+script = ExtResource("1_45swj")
+
+[node name="@@17480" type="Node3D" parent="."]
+script = ExtResource("3_a0bsy")
+
+[node name="@@17482" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17484" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17486" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17488" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17490" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17492" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17494" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 24)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17496" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17498" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17500" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17502" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 24)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17504" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17506" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17508" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 16)
+script = ExtResource("3_a0bsy")
+
+[node name="@@17510" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 24)
+script = ExtResource("3_a0bsy")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://qfy87gt2aov4"]
+
+[ext_resource type="Material" uid="uid://cua406d7onh6e" path="res://entities/voxel_world/voxel_material.tres" id="1_a613d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_451ws"]
+material = ExtResource("1_a613d")
+
+[node name="voxel_mat_testing" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+mesh = SubResource("BoxMesh_451ws")

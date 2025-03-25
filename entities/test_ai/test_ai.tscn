@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://7r776n26uxa"]
+
+[ext_resource type="Script" uid="uid://c3tdq05eabm7c" path="res://entities/test_ai/TestAI.gd" id="1_b6606"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ymji"]
+radius = 0.3
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_5x2b0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lonyc"]
+height = 1.5
+radius = 0.2
+
+[node name="TestAI" type="CharacterBody3D"]
+script = ExtResource("1_b6606")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746852, 0)
+mesh = SubResource("CapsuleMesh_5ymji")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.50846, -0.132667)
+mesh = SubResource("SphereMesh_5x2b0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.139786, 0, 0, 0, 0.139786, 0, 0, 0, 0.139786, 0.11474, 1.50846, -0.344712)
+mesh = SubResource("SphereMesh_5x2b0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.139786, 0, 0, 0, 0.139786, 0, 0, 0, 0.139786, -0.127954, 1.50846, -0.344712)
+mesh = SubResource("SphereMesh_5x2b0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.747692, 0)
+shape = SubResource("CylinderShape3D_lonyc")
+
+[node name="JumpCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -0.5)
+
+[node name="hCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -0.5)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="update_rand_pos"]

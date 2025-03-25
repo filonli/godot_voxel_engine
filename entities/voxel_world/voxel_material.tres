@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cua406d7onh6e"]
+
+[ext_resource type="Texture2D" uid="uid://c3c5lqtrly1a1" path="res://assets/WSUUw.jpg" id="1_g4khp"]
+
+[resource]
+albedo_texture = ExtResource("1_g4khp")
+normal_scale = -16.0
+texture_filter = 0

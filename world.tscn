@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://dfcxdvhk2esnx"]
+
+[ext_resource type="Script" uid="uid://bcaa5gbfjpfhm" path="res://entities/voxel_world/VoxelWorld.gd" id="1_mgdhi"]
+[ext_resource type="Texture2D" uid="uid://8nq1s46ut1ut" path="res://icon.svg" id="2_806tf"]
+[ext_resource type="Script" uid="uid://b4a55ac7wh4bg" path="res://assets/simple_fpsplayer/Player.gd" id="6_clc63"]
+[ext_resource type="Script" uid="uid://cgk0cxb4ms1pp" path="res://entities/voxel_world/VoxelWorldInteractor.gd" id="7_t3f08"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xj2i5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m31s2"]
+sky_material = SubResource("ProceduralSkyMaterial_xj2i5")
+
+[sub_resource type="Environment" id="Environment_vfitk"]
+background_mode = 2
+sky = SubResource("Sky_m31s2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8fgmm"]
+seed = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5y6m"]
+albedo_color = Color(0.47451, 0.47451, 0.47451, 1)
+albedo_texture = ExtResource("2_806tf")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euj4i"]
+radius = 0.3
+height = 1.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aesi0"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.231373)
+
+[sub_resource type="SphereMesh" id="SphereMesh_radrv"]
+material = SubResource("StandardMaterial3D_aesi0")
+radius = 0.25
+height = 0.5
+radial_segments = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4o6n"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.760784, 0.619608, 0.364706, 0.0666667)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ia0u8"]
+material = SubResource("StandardMaterial3D_r4o6n")
+size = Vector3(1.01, 1.01, 1.01)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vfitk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="VoxelWorld" type="Node3D" parent="."]
+script = ExtResource("1_mgdhi")
+world_size = Vector3i(8, 2, 8)
+noise = SubResource("FastNoiseLite_8fgmm")
+voxel_material = SubResource("StandardMaterial3D_d5y6m")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 12, 1)
+disable_mode = 2
+floor_max_angle = 0.802851
+script = ExtResource("6_clc63")
+
+[node name="body" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_euj4i")
+
+[node name="rotation_helper" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/rotation_helper"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/rotation_helper/Camera3D" node_paths=PackedStringArray("voxel_world")]
+target_position = Vector3(0, 0, -5)
+script = ExtResource("7_t3f08")
+voxel_world = NodePath("../../../../VoxelWorld")
+
+[node name="HintPlace" type="MeshInstance3D" parent="Player/rotation_helper/Camera3D/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("SphereMesh_radrv")
+
+[node name="HintBreak" type="MeshInstance3D" parent="Player/rotation_helper/Camera3D/RayCast3D"]
+mesh = SubResource("BoxMesh_ia0u8")

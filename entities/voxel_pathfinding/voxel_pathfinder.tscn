@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://b42ol6dmgabgq"]
+
+[ext_resource type="Script" uid="uid://bi5a7p4neb4ob" path="res://entities/voxel_pathfinding/voxel_pathfinder.gd" id="1_3a4of"]
+[ext_resource type="Shader" uid="uid://40kqnysfmbi8" path="res://entities/voxel_pathfinding/paht_debug_mat.res" id="2_ldg6y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbeql"]
+shading_mode = 0
+albedo_color = Color(0.854902, 0, 0.211765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_syp7e"]
+material = SubResource("StandardMaterial3D_gbeql")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1ft0"]
+shading_mode = 0
+albedo_color = Color(0.47451, 0.729412, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o1di1"]
+material = SubResource("StandardMaterial3D_q1ft0")
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2wmp"]
+render_priority = 0
+shader = ExtResource("2_ldg6y")
+
+[node name="VoxelPathfinder" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+script = ExtResource("1_3a4of")
+max_iterations = 100
+debug_mesh_done = SubResource("BoxMesh_syp7e")
+debug_mesh_new = SubResource("SphereMesh_o1di1")
+path_debug_material = SubResource("ShaderMaterial_j2wmp")
